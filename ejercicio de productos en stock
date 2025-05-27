@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 3
+
+
+typedef struct {
+    int numero_producto;
+    char nombre_producto[30];
+    int cantidad_stock;
+} Producto;
+
+
+void ordenarPorNumero(Producto productos[], int n) {
+    Producto temp;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (productos[j].numero_producto > productos[j + 1].numero_producto) {
+                temp = productos[j];
+                productos[j] = productos[j + 1];
+                productos[j + 1] = temp;
+            }
+        }
+    }
+}
+
+
+void mostrarProductos(Producto productos[], int n) {
+    printf("\nContenido del arreglo:\n");
+    printf("%-10s %-20s %-10s\n", "Número", "Nombre", "Stock");
+    for (int i = 0; i < n; i++) {
+        printf("%-10d %-20s %-10d\n", productos[i].numero_producto, productos[i].nombre_producto, productos[i].cantidad_stock);
+    }
+}
+
+
+void buscarProducto(Producto productos[], int n, int buscar) {
+    int encontrado = 0;
+    for (int i = 0; i < n; i++) {
+        if (productos[i].numero_producto == buscar) {
+            printf("Producto encontrado: %s (Stock: %d)\n", productos[i].nombre_producto, productos[i].cantidad_stock);
+            encontrado = 1;
+            break;
+        }
+    }
+    if (!encontrado)
+        printf(" Producto con número %d no encontrado.\n", buscar);
+}
+
+int main() {
+    Producto productos[MAX];
+
+    
+    for (int i = 0; i < MAX; i++) {
+        printf("\nProducto #%d:\n", i + 1);
+        printf("Ingrese número de producto: ");
+        scanf("%d", &productos[i].numero_producto);
+        printf("Ingrese nombre del producto: ");
+        scanf(" %[^\n]s", productos[i].nombre_producto);  
+        printf("Ingrese cantidad en stock: ");
+        scanf("%d", &productos[i].cantidad_stock);
+    }
+
+    
+    ordenarPorNumero(productos, MAX);
+
+    
+    int num_buscar;
+    printf("\nIngrese número de producto a buscar: ");
+    scanf("%d", &num_buscar);
+    buscarProducto(productos, MAX, num_buscar);
+
+  
+    mostrarProductos(productos, MAX);
+
+    return 0;
+}
