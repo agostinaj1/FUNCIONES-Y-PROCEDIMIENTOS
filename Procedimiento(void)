@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+// Procedimiento sin valor de retorno
+void saludar() {
+    printf("¡Hola, bienvenido!\n");
+}
+
+int main() {
+    saludar();  // Llamamos al procedimiento
+    return 0;
+}
+
+
+//Ejemplo combinando función y procedimiento
+
+int cuadrado(int x) {
+    return x * x;
+}
+
+void mostrarResultado(int numero, int resultado) {
+    printf("El cuadrado de %d es %d\n", numero, resultado);
+}
+
+int main() {
+    int n = 4;
+    int res = cuadrado(n);
+    mostrarResultado(n, res);
+    return 0;
+}
