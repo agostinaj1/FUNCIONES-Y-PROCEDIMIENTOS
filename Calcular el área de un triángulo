@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+// Función para calcular el área de un triángulo
+float areaTriangulo(float base, float altura) {
+    return (base * altura) / 2;
+}
+
+int main() {
+    float base, altura, area;
+
+    // Pedir datos al usuario
+    printf("Ingrese la base del triángulo: ");
+    scanf("%f", &base);
+
+    printf("Ingrese la altura del triángulo: ");
+    scanf("%f", &altura);
+
+    // Calcular el área
+    area = areaTriangulo(base, altura);
+
+    // Mostrar resultado
+    printf("El área del triángulo es: %.2f\n", area);
+
+    return 0;
+}
