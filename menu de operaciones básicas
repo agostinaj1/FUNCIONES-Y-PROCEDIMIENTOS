@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+// Funciones para operaciones básicas
+float suma(float a, float b) {
+    return a + b;
+}
+
+float resta(float a, float b) {
+    return a - b;
+}
+
+float multiplicacion(float a, float b) {
+    return a * b;
+}
+
+int main() {
+    float num1, num2, resultado;
+    char operacion;
+
+    // Solicitar datos al usuario
+    printf("Ingrese el primer número: ");
+    scanf("%f", &num1);
+
+    printf("Ingrese el segundo número: ");
+    scanf("%f", &num2);
+
+    printf("Ingrese la operación a realizar (+, -, *): ");
+    scanf(" %c", &operacion);  // Espacio antes de %c para evitar problemas con el buffer
+
+    // Seleccionar y ejecutar operación
+    switch (operacion) {
+        case '+':
+            resultado = suma(num1, num2);
+            printf("Resultado de la suma: %.2f\n", resultado);
+            break;
+        case '-':
+            resultado = resta(num1, num2);
+            printf("Resultado de la resta: %.2f\n", resultado);
+            break;
+        case '*':
+            resultado = multiplicacion(num1, num2);
+            printf("Resultado de la multiplicación: %.2f\n", resultado);
+            break;
+        default:
+            printf("Operación no válida.\n");
+    }
+
+    return 0;
+}
